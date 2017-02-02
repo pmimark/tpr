@@ -1,0 +1,20 @@
+TARGETS = rsyslog lvm2-lvmpolld uuidd lvm2-lvmetad lxcfs open-vm-tools lxd killprocs apport dnsmasq mysql irqbalance mdadm atd single acpid dbus ssh apache2 exim4 postfix cron rsync plymouth grub-common ondemand rc.local
+INTERACTIVE = apache2
+dnsmasq: rsyslog
+mysql: rsyslog
+irqbalance: rsyslog
+mdadm: rsyslog
+atd: rsyslog
+single: killprocs
+acpid: rsyslog
+dbus: rsyslog
+ssh: rsyslog
+apache2: rsyslog dnsmasq
+exim4: rsyslog dnsmasq mysql
+postfix: rsyslog dnsmasq mysql
+cron: rsyslog dnsmasq
+rsync: rsyslog dnsmasq
+plymouth: exim4 rsyslog dnsmasq mysql lvm2-lvmpolld irqbalance uuidd lvm2-lvmetad mdadm atd apache2 lxcfs open-vm-tools postfix lxd acpid cron apport rsync dbus ssh
+grub-common: exim4 rsyslog dnsmasq mysql lvm2-lvmpolld irqbalance uuidd lvm2-lvmetad mdadm atd apache2 lxcfs open-vm-tools postfix lxd acpid cron apport rsync dbus ssh
+ondemand: exim4 rsyslog dnsmasq mysql lvm2-lvmpolld irqbalance uuidd lvm2-lvmetad mdadm atd apache2 lxcfs open-vm-tools postfix lxd acpid cron apport rsync dbus ssh
+rc.local: exim4 rsyslog dnsmasq mysql lvm2-lvmpolld irqbalance uuidd lvm2-lvmetad mdadm atd apache2 lxcfs open-vm-tools postfix lxd acpid cron apport rsync dbus ssh
